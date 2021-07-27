@@ -351,6 +351,7 @@ link_libraries(physics_msgs)
 add_library(gazebo_airspeed_plugin SHARED src/gazebo_airspeed_plugin.cpp)
 add_library(gazebo_camera_manager_plugin SHARED src/gazebo_camera_manager_plugin.cpp)
 add_library(gazebo_gps_plugin SHARED src/gazebo_gps_plugin.cpp)
+add_library(gazebo_gps_spoof_plugin SHARED src/gazebo_gps_spoof_plugin.cpp)
 add_library(gazebo_groundtruth_plugin SHARED src/gazebo_groundtruth_plugin.cpp)
 add_library(gazebo_irlock_plugin SHARED src/gazebo_irlock_plugin.cpp)
 add_library(gazebo_lidar_plugin SHARED src/gazebo_lidar_plugin.cpp)
@@ -378,6 +379,7 @@ set(plugins
   gazebo_airspeed_plugin
   gazebo_camera_manager_plugin
   gazebo_gps_plugin
+  gazebo_gps_spoof_plugin
   gazebo_groundtruth_plugin
   gazebo_irlock_plugin
   gazebo_lidar_plugin
@@ -468,10 +470,10 @@ set(plugins
 #if("${GAZEBO_VERSION}" VERSION_LESS "7.0")
   add_library(LiftDragPlugin SHARED src/liftdrag_plugin/liftdrag_plugin.cpp)
   list(APPEND plugins LiftDragPlugin)
-
+  
   add_library(ForceVisual SHARED src/force_visual/force_visual.cpp)
   list(APPEND plugins ForceVisual)
-#endif()
+  #endif()
 
 foreach(plugin ${plugins})
   add_dependencies(${plugin} mav_msgs nav_msgs std_msgs sensor_msgs)
